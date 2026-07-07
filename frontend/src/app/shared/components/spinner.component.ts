@@ -5,9 +5,10 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   template: `
     <span
-      class="inline-block animate-spin rounded-full border-2 border-current border-t-transparent"
+      class="inline-block animate-spin rounded-full"
       [style.width.px]="size"
       [style.height.px]="size"
+      style="border: 2px solid transparent; border-top-color: #7C6CFF; border-right-color: #22D3EE; border-bottom-color: #34D399;"
       role="status"
       aria-label="Loading"></span>
   `,

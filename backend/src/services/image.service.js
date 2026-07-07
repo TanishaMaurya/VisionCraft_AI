@@ -16,9 +16,9 @@ import {
  * Note on the free tier: models may be "cold" and return HTTP 503 with
  * an `estimated_time`. We retry a few times with backoff before failing.
  */
-const HF_BASE = 'https://api-inference.huggingface.co/models';
+const HF_BASE = "https://router.huggingface.co/hf-inference/models";
 
-const buildPrompt = (prompt, style) => {
+const  buildPrompt = (prompt, style) => {
   const suffix = STYLE_PROMPTS[style] || '';
   return suffix ? `${prompt}, ${suffix}` : prompt;
 };
@@ -58,11 +58,18 @@ export const imageService = {
             Authorization: `Bearer ${env.hf.token}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify({
+            inputs: fullPrompt,
+            options: {
+              wait_for_model: true,
+            },
+          }),
         });
-      } catch {
-        throw ApiError.internal('Could not reach the image generation service.');
-      }
+      } 
+      catch (err) {
+          throw err;
+        }
+     
 
       // Model is still loading -> wait and retry.
       if (response.status === 503) {

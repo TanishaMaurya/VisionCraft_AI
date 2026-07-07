@@ -18,19 +18,25 @@ import {
   imports: [ReactiveFormsModule, RouterLink, SpinnerComponent, ImageCardComponent],
   template: `
     <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <header class="mb-8">
-        <h1 class="font-display text-3xl font-bold">Generate an image</h1>
-        <p class="mt-1 text-sm text-slate-500">
-          One credit per image · {{ credits() }} credit{{ credits() === 1 ? '' : 's' }} left
+      <header class="mb-8 animate-fade-up">
+        <h1 class="font-display text-3xl font-bold text-white">Generate an image</h1>
+        <p class="mt-1 text-sm text-slate-400">
+          One credit per image ·
+          <span class="font-semibold text-gold-400">{{ credits() }} credit{{ credits() === 1 ? '' : 's' }}</span> left
         </p>
       </header>
 
       <div class="grid gap-8 lg:grid-cols-[420px_1fr]">
-        <!-- Form -->
-        <div class="card h-fit">
+        <!-- Form sidebar -->
+        <div class="card h-fit animate-fade-up-delay-1"
+             style="border-color: rgba(255,255,255,0.08);">
           @if (credits() < 1) {
-            <div class="rounded-xl border border-amber-500/30 bg-amber-50 p-4 text-sm text-amber-800 dark:bg-amber-500/10 dark:text-amber-300">
-              You're out of credits. Buy more to keep generating.
+            <div class="rounded-xl border border-gold-500/20 bg-gold-500/[0.06] p-4 text-sm text-gold-300">
+              <div class="flex items-center gap-2 font-semibold">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M12 3l9.5 16.5H2.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                You're out of credits
+              </div>
+              <p class="mt-1.5 text-xs text-gold-400/70">Buy more to keep generating.</p>
               <a routerLink="/pricing" class="btn-primary mt-3 w-full py-2.5">Buy credits</a>
             </div>
           } @else {
@@ -44,7 +50,7 @@ import {
                   class="input resize-none"
                   placeholder="A lighthouse on a cliff at golden hour, dramatic clouds…"></textarea>
                 @if (invalid('prompt')) {
-                  <p class="mt-1 text-xs text-red-500">Prompt must be at least 3 characters.</p>
+                  <p class="mt-1 text-xs text-flame-400">Prompt must be at least 3 characters.</p>
                 }
               </div>
 
@@ -79,17 +85,20 @@ import {
               </div>
 
               <button type="submit" class="btn-primary w-full py-3" [disabled]="loading()">
-                @if (loading()) { <app-spinner /> Generating… } @else { Generate image }
+                @if (loading()) { <app-spinner /> Generating… } @else {
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Generate image
+                }
               </button>
             </form>
           }
         </div>
 
-        <!-- Preview -->
-        <div class="flex min-h-[420px] items-center justify-center">
+        <!-- Preview canvas -->
+        <div class="flex min-h-[420px] items-center justify-center animate-fade-up-delay-2">
           @if (loading()) {
             <div class="w-full max-w-md text-center">
-              <div class="skeleton mx-auto aspect-square w-full"></div>
+              <div class="skeleton mx-auto aspect-square w-full rounded-2xl"></div>
               <p class="mt-4 text-sm text-slate-500">
                 Rendering your image… the model may take a few seconds to warm up.
               </p>
@@ -102,9 +111,10 @@ import {
                 (favorite)="onFavorite($event)" />
             </div>
           } @else {
-            <div class="text-center text-slate-400">
-              <div class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-slate-100 dark:bg-ink-800">
-                <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke-linecap="round"/></svg>
+            <div class="text-center text-slate-500">
+              <div class="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-2xl border border-white/[0.06]"
+                   style="background: linear-gradient(135deg, rgba(232,82,122,0.04) 0%, rgba(240,160,48,0.03) 100%);">
+                <svg viewBox="0 0 24 24" class="h-9 w-9 text-slate-600" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6" stroke-linecap="round"/></svg>
               </div>
               <p class="text-sm">Your generated image will appear here.</p>
             </div>
@@ -116,10 +126,16 @@ import {
   styles: [
     `
       .chip {
-        @apply rounded-xl border border-slate-200 bg-transparent px-3 py-2.5 text-sm font-medium text-ink-700 transition hover:border-iris-500/50 dark:border-ink-600 dark:text-slate-300;
+        @apply rounded-xl border border-white/[0.06] bg-white/[0.02] px-3 py-2.5 text-sm font-medium text-slate-300 transition-all duration-300;
+      }
+      .chip:hover {
+        @apply border-white/15 bg-white/[0.05];
       }
       .chip-active {
-        @apply border-iris-500 bg-iris-500/10 text-iris-500;
+        border-color: rgba(232, 82, 122, 0.4) !important;
+        background: rgba(232, 82, 122, 0.08) !important;
+        color: #FF9CAF !important;
+        box-shadow: 0 0 15px -3px rgba(232, 82, 122, 0.2);
       }
     `,
   ],

@@ -4,55 +4,119 @@
 
 @layer base {
   :root {
-    color-scheme: light dark;
+    color-scheme: dark;
+    --flame: 232, 82, 122;
+    --gold: 240, 160, 48;
+    --lav: 167, 139, 250;
   }
-  html,
-  body {
+
+  html {
     @apply h-full;
+    scroll-behavior: smooth;
   }
+
   body {
-    @apply bg-white text-ink-900 antialiased dark:bg-ink-900 dark:text-slate-100;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply h-full bg-ink-950 text-slate-200 antialiased;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   }
+
   h1,
   h2,
   h3,
   .font-display {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   }
-  /* Consistent, visible keyboard focus */
+
   *:focus-visible {
-    @apply outline-none ring-2 ring-iris-500 ring-offset-2 ring-offset-white dark:ring-offset-ink-900;
+    @apply outline-none ring-2 ring-flame-500/60 ring-offset-2 ring-offset-ink-950;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-600;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-500;
+  }
+
+  ::selection {
+    background: rgba(var(--flame), 0.25);
   }
 }
 
 @layer components {
+  /* ── Buttons ── */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
-      focus-visible:ring-2 focus-visible:ring-iris-500 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply relative inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300
+      focus-visible:ring-2 focus-visible:ring-flame-500/60 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn bg-spectrum-gradient text-white shadow-glow hover:brightness-110;
+    @apply btn overflow-hidden text-white;
+    background: linear-gradient(135deg, #E8527A 0%, #D03A62 40%, #F0A030 100%);
+    background-size: 200% 200%;
+    box-shadow: 0 0 20px -5px rgba(var(--flame), 0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .btn-primary:hover {
+    background-position: 100% 0%;
+    box-shadow: 0 0 40px -5px rgba(var(--flame), 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
   }
   .btn-ghost {
-    @apply btn border border-slate-200 bg-transparent text-ink-900 hover:bg-slate-100
-      dark:border-ink-600 dark:text-slate-100 dark:hover:bg-ink-800;
+    @apply btn border border-white/10 bg-white/[0.03] text-slate-200 backdrop-blur-sm;
   }
+  .btn-ghost:hover {
+    @apply border-white/20 bg-white/[0.08];
+    transform: translateY(-1px);
+  }
+  .btn-ghost:active {
+    transform: translateY(0);
+  }
+
+  /* ── Cards ── */
   .card {
-    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-sm
-      dark:border-ink-700 dark:bg-ink-800;
+    @apply relative rounded-2xl border border-white/[0.06] p-6;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
   }
+  .card:hover {
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .glass {
+    @apply relative overflow-hidden rounded-2xl border border-white/10;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  /* ── Inputs ── */
   .input {
-    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-ink-900
-      placeholder:text-slate-400 focus:border-iris-500 focus:outline-none
-      dark:border-ink-600 dark:bg-ink-900 dark:text-slate-100;
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-slate-100
+      placeholder:text-slate-500 transition-all duration-300;
+    backdrop-filter: blur(8px);
+  }
+  .input:focus {
+    @apply border-flame-500/50 outline-none;
+    box-shadow: 0 0 0 3px rgba(var(--flame), 0.1), 0 0 20px -5px rgba(var(--flame), 0.2);
   }
   .label {
-    @apply mb-1.5 block text-sm font-medium text-ink-700 dark:text-slate-300;
+    @apply mb-1.5 block text-sm font-medium text-slate-400;
   }
-  /* Skeleton shimmer */
+
+  /* ── Skeleton shimmer ── */
   .skeleton {
-    @apply relative overflow-hidden rounded-xl bg-slate-200 dark:bg-ink-700;
+    @apply relative overflow-hidden rounded-xl;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
   }
   .skeleton::after {
     content: '';
@@ -60,10 +124,48 @@
     background-image: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.15),
+      rgba(232, 82, 122, 0.06),
+      rgba(240, 160, 48, 0.05),
       transparent
     );
-    animation: shimmer 1.5s infinite;
+    animation: shimmer 2s infinite;
+  }
+
+  /* ── Nav link ── */
+  .nav-link {
+    @apply relative rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition-all duration-300;
+  }
+  .nav-link:hover {
+    @apply text-slate-100;
+  }
+
+  /* ── Aurora border ── */
+  .aurora-border {
+    @apply relative;
+  }
+  .aurora-border::before {
+    content: '';
+    @apply absolute -inset-[1px] rounded-2xl opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, #E8527A, #F0A030, #A78BFA, #06B6D4);
+    background-size: 300% 300%;
+    animation: border-flow 4s ease infinite;
+    z-index: -1;
+  }
+  .aurora-border:hover::before {
+    @apply opacity-100;
+  }
+
+  /* ── Text utilities ── */
+  .text-glow {
+    text-shadow: 0 0 40px rgba(var(--flame), 0.3);
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #E8527A 0%, #F0A030 50%, #A78BFA 100%);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 1px rgba(var(--flame), 0.2), 0 0 20px -5px rgba(var(--flame), 0.3);
   }
 }
 
