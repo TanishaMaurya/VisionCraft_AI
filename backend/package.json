@@ -13,10 +13,17 @@
     "prisma:studio": "prisma studio",
     "seed": "node prisma/seed.js"
   },
-  "keywords": ["ai", "image-generation", "express", "prisma", "razorpay"],
+  "keywords": [
+    "ai",
+    "image-generation",
+    "express",
+    "prisma",
+    "razorpay"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@huggingface/inference": "^4.13.22",
     "@prisma/client": "^6.2.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
