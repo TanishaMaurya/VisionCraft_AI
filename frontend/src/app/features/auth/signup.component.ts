@@ -80,7 +80,7 @@ export class SignupComponent {
     this.loading.set(true);
     this.auth.signup(this.form.getRawValue()).subscribe({
       next: () => {
-        this.toast.success('Account created. Welcome to Imageify!');
+        this.toast.success('Account created. Welcome to VisionCraft AI!');
         this.router.navigateByUrl('/dashboard');
       },
       error: () => this.loading.set(false),

@@ -114,7 +114,7 @@ export class PricingComponent implements OnInit {
       key: order.keyId,
       amount: order.amount,
       currency: order.currency,
-      name: 'Imageify',
+      name: 'VisionCraft AI',
       description: `${order.credits} credits — ${order.packageLabel}`,
       order_id: order.orderId,
       prefill: { name: user?.name, email: user?.email },

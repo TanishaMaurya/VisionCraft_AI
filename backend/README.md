@@ -1,4 +1,4 @@
-# Imageify — Backend API
+# VisionCraft AI — Backend API
 
 AI-Powered Image Generation Platform. REST API built with **Node.js + Express + Prisma + Neon PostgreSQL**, JWT auth, Hugging Face image generation, and Razorpay payments.
 

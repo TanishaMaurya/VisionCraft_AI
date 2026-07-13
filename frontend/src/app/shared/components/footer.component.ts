@@ -22,7 +22,7 @@ import { RouterLink } from '@angular/router';
             </svg>
           </span>
           <p class="text-sm text-slate-500">
-            © {{ year }} Imageify. Images made with AI.
+            © {{ year }} VisionCraft AI. Images made with AI.
           </p>
         </div>
         <div class="flex gap-6 text-sm text-slate-500">

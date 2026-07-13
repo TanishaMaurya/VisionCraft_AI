@@ -1,7 +1,7 @@
 {
   "name": "imageify-frontend",
   "version": "1.0.0",
-  "description": "Imageify - AI-Powered Image Generation Platform (Angular 19 frontend)",
+  "description": "VisionCraft AI - AI-Powered Image Generation Platform (Angular 19 frontend)",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

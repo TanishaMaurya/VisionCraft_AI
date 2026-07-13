@@ -97,7 +97,7 @@ export class ImageCardComponent {
   download(): void {
     const a = document.createElement('a');
     a.href = this.image.imageUrl;
-    a.download = `imageify-${this.image.id}.png`;
+    a.download = `VisionCraft-AI-${this.image.id}.png`;
     document.body.appendChild(a);
     a.click();
     a.remove();

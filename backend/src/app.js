@@ -40,7 +40,7 @@ app.use(
 
 // ─── Health check ───────────────────────────────────────
 app.get('/health', (req, res) =>
-  res.json({ success: true, message: 'Imageify API is running 🚀' })
+  res.json({ success: true, message: 'VisionCraft AI API is running 🚀' })
 );
 
 // ─── API routes ─────────────────────────────────────────

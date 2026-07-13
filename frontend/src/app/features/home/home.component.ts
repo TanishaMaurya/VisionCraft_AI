@@ -43,7 +43,7 @@ import { AuthService } from '../../core/services/auth.service';
         </h1>
 
         <p class="animate-fade-up-delay-2 mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-          Describe anything. Pick a style and shape. Imageify renders it with AI —
+          Describe anything. Pick a style and shape. VisionCraft AI renders it with AI —
           then keep, download, and revisit your whole gallery.
         </p>
 

@@ -1,2 +1,2 @@
-# Imageify — AI-Powered Image Generation Platform
+# VisionCraft AI — AI-Powered Image Generation Platform
 

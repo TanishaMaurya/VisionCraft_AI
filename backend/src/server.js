@@ -4,7 +4,7 @@ import { prisma } from './config/prisma.js';
 
 const server = app.listen(env.port, () => {
   // eslint-disable-next-line no-console
-  console.log(`✅ Imageify API listening on port ${env.port} [${env.nodeEnv}]`);
+  console.log(`✅ VisionCraft AI API listening on port ${env.port} [${env.nodeEnv}]`);
 });
 
 // Graceful shutdown: close DB connections and the HTTP server.

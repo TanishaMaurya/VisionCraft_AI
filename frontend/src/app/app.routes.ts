@@ -11,55 +11,55 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./features/home/home.component').then((m) => m.HomeComponent),
-    title: 'Imageify — AI Image Generation',
+    title: 'VisionCraft AI — AI Image Generation',
   },
   {
     path: 'pricing',
     loadComponent: () =>
       import('./features/pricing/pricing.component').then((m) => m.PricingComponent),
-    title: 'Pricing — Imageify',
+    title: 'Pricing — VisionCraft AI',
   },
   {
     path: 'login',
     canActivate: [guestGuard],
     loadComponent: () =>
       import('./features/auth/login.component').then((m) => m.LoginComponent),
-    title: 'Log in — Imageify',
+    title: 'Log in — VisionCraft AI',
   },
   {
     path: 'signup',
     canActivate: [guestGuard],
     loadComponent: () =>
       import('./features/auth/signup.component').then((m) => m.SignupComponent),
-    title: 'Sign up — Imageify',
+    title: 'Sign up — VisionCraft AI',
   },
   {
     path: 'dashboard',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
-    title: 'Dashboard — Imageify',
+    title: 'Dashboard — VisionCraft AI',
   },
   {
     path: 'generate',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./features/generate/generate.component').then((m) => m.GenerateComponent),
-    title: 'Generate — Imageify',
+    title: 'Generate — VisionCraft AI',
   },
   {
     path: 'history',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./features/history/history.component').then((m) => m.HistoryComponent),
-    title: 'History — Imageify',
+    title: 'History — VisionCraft AI',
   },
   {
     path: 'profile',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./features/profile/profile.component').then((m) => m.ProfileComponent),
-    title: 'Profile — Imageify',
+    title: 'Profile — VisionCraft AI',
   },
   {
     path: 'transactions',
@@ -68,12 +68,12 @@ export const routes: Routes = [
       import('./features/transactions/transactions.component').then(
         (m) => m.TransactionsComponent
       ),
-    title: 'Transactions — Imageify',
+    title: 'Transactions — VisionCraft AI',
   },
   {
     path: '**',
     loadComponent: () =>
       import('./features/not-found/not-found.component').then((m) => m.NotFoundComponent),
-    title: 'Page not found — Imageify',
+    title: 'Page not found — VisionCraft AI',
   },
 ];

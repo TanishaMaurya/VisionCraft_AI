@@ -23,7 +23,7 @@ import { ThemeService } from '../../core/services/theme.service';
               <circle cx="8" cy="7" r="1.4" fill="currentColor" stroke="none" />
             </svg>
           </span>
-          <span class="font-display text-lg font-extrabold tracking-tight text-white">Imageify</span>
+          <span class="font-display text-lg font-extrabold tracking-tight text-white">VisionCraft AI</span>
         </a>
 
         <!-- Desktop links -->

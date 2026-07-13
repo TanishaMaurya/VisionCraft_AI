@@ -1,6 +1,6 @@
-# Imageify — Frontend (Angular 19)
+# VisionCraft AI — Frontend (Angular 19)
 
-The web client for Imageify. Angular 19 standalone components, Tailwind CSS, lazy-loaded routes, signals for state, JWT auth, and Razorpay checkout.
+The web client for VisionCraft AI. Angular 19 standalone components, Tailwind CSS, lazy-loaded routes, signals for state, JWT auth, and Razorpay checkout.
 
 ---
 
@@ -47,7 +47,7 @@ npm install
 #   src/environments/environment.prod.ts  -> production backend URL
 
 npm start           # dev server at http://localhost:4200
-npm run build       # production build -> dist/imageify
+npm run build       # production build -> dist/VisionCraft AI
 ```
 
 The backend must be running (see `../backend/README.md`) and its
