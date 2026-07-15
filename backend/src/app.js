@@ -13,12 +13,14 @@ const app = express();
 
 // ─── Security & parsing ─────────────────────────────────
 app.use(helmet());
-app.use(
-  cors({
-    origin: [env.clientUrl, 'https://vision-craft-ai-tau.vercel.app'],
-    credentials: true,
-  })
-);
+app.use(cors());
+
+// app.use(
+//   cors({
+//     origin: [env.clientUrl, 'https://vision-craft-ai-tau.vercel.app'],
+//     credentials: true,
+//   })
+// );
 // Base64 image payloads can be large; bump the body limit.
 app.use(express.json({ limit: '15mb' }));
 app.use(express.urlencoded({ extended: true }));
